@@ -6,6 +6,10 @@ function areaOfCountry(name, area) {
 
 console.log(areaOfCountry("USA", 9372610), "USA is 6.29% of the total world's landmass");
 console.log(areaOfCountry("Russia", 17098242), "Russia is 11.48% of the total world's landmass");
+///////////////////////////////
+///////////////////////////////
+
+
 
 // Algo to find the second largest number in an array
 function secondLargest(arr) {
@@ -14,6 +18,10 @@ function secondLargest(arr) {
 
 console.log(secondLargest([10, 40, 30, 20, 50]), 40);
 console.log(secondLargest([25, 143, 89, 13, 105]), 105);
+///////////////////////////////
+///////////////////////////////
+
+
 
 // Algo to turn a string into hashtags of the three largest words
 function getHashTags(str) {
@@ -27,3 +35,61 @@ function getHashTags(str) {
 
 console.log(getHashTags("How the Avocado Became the Fruit of the Global Trade"), ["#avocado", "#became", "#global"])
 console.log(getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year"), ["#christmas", "#probably", "#will"])
+///////////////////////////////
+///////////////////////////////
+
+
+// This function will take a single word string of random consequtive letters and
+// return an array with distance each letter is from a vowel with vowels being 0 distance. 
+// Start with replacing all vowels in the string with 0 using regex
+// Split the string into an array. For each character in the array turn the zeros from a string "0"
+// to a number 0 and push everything into the distance array.
+// LOOPS //
+// Double loop and check if the char/num in the array where [j] == 0 and the char/num where [i] != 0.
+// If true run the tertiary operator checking if j-i>distArr[i]>0 and and break
+// If false check the opposite where [i] == 0 and [j] != 0.
+// If true distArr[j] = j-i
+// If false continue
+function distanceToNearestVowel(str) {
+	let vowels = /[aeiou]/gi;
+	let newStr = str.replace(vowels, 0);
+	let zeroArr = newStr.split("");
+	let distArr = [];
+	zeroArr.forEach(char => {
+		if (char == 0) {
+			char = Number(char);
+		}
+		distArr.push(char);
+	})
+	
+	for (let i = 0; i < distArr.length - 1; i++) {
+		for (let j = i + 1; j < distArr.length; j++) {
+			if (distArr[j] == 0 && distArr[i] != 0) {
+				distArr[i] = j-i > distArr[i] > 0 ? distArr[i] : j-i;
+				break;
+			} else if (distArr[j] != 0 && distArr[i] == 0) {
+				distArr[j] = j - i;
+			}
+		}
+	}
+	return distArr;
+}
+
+console.log(distanceToNearestVowel("aaaaa"), [0, 0, 0, 0, 0])
+console.log(distanceToNearestVowel("bba"), [2, 1, 0])
+console.log(distanceToNearestVowel("abbb"), [0, 1, 2, 3])
+console.log(distanceToNearestVowel("abab"), [0, 1, 0, 1])
+console.log(distanceToNearestVowel("babbb"), [1, 0, 1, 2, 3]);
+console.log(distanceToNearestVowel("baaab"), [1, 0, 0, 0, 1])
+console.log(distanceToNearestVowel("abcdabcd"), [0, 1, 2, 1, 0, 1, 2, 3])
+console.log(distanceToNearestVowel("abbaaaaba"), [0, 1, 1, 0, 0, 0, 0, 1, 0])
+console.log(distanceToNearestVowel("treesandflowers"), [2, 1, 0, 0, 1, 0, 1, 2, 2, 1, 0, 1, 0, 1, 2])
+console.log(distanceToNearestVowel("pokerface"), [1, 0, 1, 0, 1, 1, 0, 1, 0])
+console.log(distanceToNearestVowel("beautiful"), [1, 0, 0, 0, 1, 0, 1, 0, 1])
+console.log(distanceToNearestVowel("rythmandblues"), [5, 4, 3, 2, 1, 0, 1, 2, 2, 1, 0, 0, 1])
+console.log(distanceToNearestVowel("shopper"), [2, 1, 0, 1, 1, 0, 1])
+console.log(distanceToNearestVowel("singingintherain"), [1, 0, 1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 0, 0, 1])
+console.log(distanceToNearestVowel("sugarandspice"), [1, 0, 1, 0, 1, 0, 1, 2, 2, 1, 0, 1, 0])
+console.log(distanceToNearestVowel("totally"), [1, 0, 1, 0, 1, 2, 3])
+///////////////////////////////
+///////////////////////////////
