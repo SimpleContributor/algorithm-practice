@@ -93,3 +93,44 @@ console.log(distanceToNearestVowel("sugarandspice"), [1, 0, 1, 0, 1, 0, 1, 2, 2,
 console.log(distanceToNearestVowel("totally"), [1, 0, 1, 0, 1, 2, 3])
 ///////////////////////////////
 ///////////////////////////////
+
+
+// This function will take in an arr of numbers and a string 
+// The string will be one of three things: Asc (ascending), Des (descending), and None
+// Return the array in the given order. None will not change the order in any way
+function ascDesNone(arr, str) {
+	return str == "None" ? arr : str == "Asc" ? arr.sort((a,b) => a-b) : arr.sort((a,b) => b-a);
+}
+
+console.log(ascDesNone([4, 3, 2, 1], "Asc"), [1, 2, 3, 4]);
+console.log(ascDesNone([7, 8, 11, 66], "Des"), [66, 11, 8, 7]);
+console.log(ascDesNone([1, 2, 3, 4], "None"),[1, 2, 3, 4]);
+console.log(ascDesNone([1, 0, 1, 0], "Asc"), [0, 0, 1, 1]);
+console.log(ascDesNone([1, 2, 2, 2, 2, 2, 2], "Des"), [2, 2, 2, 2, 2, 2, 1]);
+console.log(ascDesNone([9, 7, 43, 11, 16, 111, 19], "Asc"), [7, 9, 11, 16, 19, 43, 111]);
+///////////////////////////////
+///////////////////////////////
+
+
+// This function will take in a 4 digit year and return how times Friday the 13th occurs in
+// the given year
+function howUnlucky(y) {
+	let count = 0;
+	for (let i = 0; i <= 11; i++) {
+		let year = new Date(y, i, 13);
+		if (year.getDay() == 5) count++;
+	}
+	return count;
+}
+
+console.log(howUnlucky(2000), 1)
+console.log(howUnlucky(2001), 2)
+console.log(howUnlucky(2002), 2)
+console.log(howUnlucky(2003), 1)
+console.log(howUnlucky(2004), 2)
+console.log(howUnlucky(2005), 1)
+console.log(howUnlucky(2006), 2)
+console.log(howUnlucky(2007), 2)
+console.log(howUnlucky(2008), 1)
+///////////////////////////////
+///////////////////////////////
