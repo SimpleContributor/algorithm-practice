@@ -116,7 +116,7 @@ console.log(ascDesNone([9, 7, 43, 11, 16, 111, 19], "Asc"), [7, 9, 11, 16, 19, 4
 // the given year
 function howUnlucky(y) {
 	let count = 0;
-	for (let i = 0; i <= 11; i++) {
+	for (let i = 0; i < 12; i++) {
 		let year = new Date(y, i, 13);
 		if (year.getDay() == 5) count++;
 	}
@@ -132,5 +132,44 @@ console.log(howUnlucky(2005), 1)
 console.log(howUnlucky(2006), 2)
 console.log(howUnlucky(2007), 2)
 console.log(howUnlucky(2008), 1)
+///////////////////////////////
+///////////////////////////////
+
+
+// This function will return the length of the array when str is split and filtered by myChar
+function charCount(myChar, str) {
+	// let count = 0;
+	// str.split("").filter(letter => letter == myChar ? count++ : count);
+	// return count;
+
+	// Can be refactored to
+	return str.split('').filter(char => char === myChar).length;
+}
+
+console.log(charCount('a', 'edabit'), 1);
+console.log(charCount('b', 'big fat bubble'), 4);
+console.log(charCount('c', 'Chamber of secrets'), 1);
+console.log(charCount('f', 'frank and his friends have offered five foxes for sale'), 7);
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Check if the number divided by 10 is greater than the remainder when divided by 10.
+// Return the boolean value. In the case of two equal numbers it will still return true
+// i.e. 99. 9.9 > 9, so true
+function largestSwap(num) {
+	// let reverseNum = Number(num.toString().split("").reverse().join(""));
+	// return num > reverseNum ? true : num === reverseNum ? true : false;
+	// simplified with this 
+	return num / 10 > num % 10;
+}
+
+console.log(largestSwap(27), false, '27 < 72, so not largest swap.');
+console.log(largestSwap(43), true, '43 > 34, so largest swap.');
+console.log(largestSwap(14), false, '14 < 41, so not largest swap.');
+console.log(largestSwap(53), true, '53 > 35, so largest swap.');
+console.log(largestSwap(99), true, 'Cannot do better, so largest swap.');
 ///////////////////////////////
 ///////////////////////////////
