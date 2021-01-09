@@ -173,3 +173,73 @@ console.log(largestSwap(53), true, '53 > 35, so largest swap.');
 console.log(largestSwap(99), true, 'Cannot do better, so largest swap.');
 ///////////////////////////////
 ///////////////////////////////
+
+
+
+
+// Create a simple calculator that will take in two numbers and an operator
+// Return the result of the calculation
+function calculator(num1, operator, num2) {
+	return operator=="/"&&num2==0 ? "Can't divide by 0!" : eval(num1 + operator + num2);
+}
+
+console.log(calculator(2, '/', 2), 1);
+console.log(calculator(10, '-', 7), 3);
+console.log(calculator(2, '*', 16), 32);
+console.log(calculator(2, '-', 2), 0);
+console.log(calculator(15, '+', 26), 41);
+console.log(calculator(2, '+', 2), 4);
+console.log(calculator(2, "/", 0), "Can't divide by 0!");
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Take in a letter and give the nearest vowel in the alphabet
+// First check if the letter is a vowel and if so return that letter
+// If not check the position of the letter in the alphabet and return a vowel
+// based on the letters position in the alphabet
+function nearestVowel(s) {
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+	let vowels = /[aeiou]/;
+	if (vowels.test(s)) return s;
+	if (2 >= alphabet.indexOf(s)) {
+		return "a";
+	} else if (6 >= alphabet.indexOf(s)) {
+		return "e";
+	} else if (11 >= alphabet.indexOf(s)) {
+		return "i";
+	} else if (17 >= alphabet.indexOf(s)) {
+		return "o";
+	} else return "u";
+}
+
+console.log(nearestVowel("a"), "a");
+console.log(nearestVowel("b"), "a");
+console.log(nearestVowel("c"), "a");
+console.log(nearestVowel("d"), "e");
+console.log(nearestVowel("e"), "e");
+console.log(nearestVowel("f"), "e");
+console.log(nearestVowel("g"), "e");
+console.log(nearestVowel("h"), "i");
+console.log(nearestVowel("i"), "i");
+console.log(nearestVowel("j"), "i");
+console.log(nearestVowel("k"), "i");
+console.log(nearestVowel("l"), "i");
+console.log(nearestVowel("m"), "o");
+console.log(nearestVowel("n"), "o");
+console.log(nearestVowel("o"), "o");
+console.log(nearestVowel("p"), "o");
+console.log(nearestVowel("q"), "o");
+console.log(nearestVowel("r"), "o");
+console.log(nearestVowel("s"), "u");
+console.log(nearestVowel("t"), "u");
+console.log(nearestVowel("u"), "u");
+console.log(nearestVowel("v"), "u");
+console.log(nearestVowel("w"), "u");
+console.log(nearestVowel("x"), "u");
+console.log(nearestVowel("y"), "u");
+console.log(nearestVowel("z"), "u");
+///////////////////////////////
+///////////////////////////////
