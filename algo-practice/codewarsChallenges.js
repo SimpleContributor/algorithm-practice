@@ -8,7 +8,8 @@ console.log(arrayDiff([], [4,5]), [], "a was [], b was [4,5]");
 console.log(arrayDiff([3,4], [3]), [4], "a was [3,4], b was [3]");
 console.log(arrayDiff([1,8,2], []), [1,8,2], "a was [1,8,2], b was []");
 console.log(arrayDiff([1,8,2,12], [1,8]), [2,12], "a was [1,8,2], b was []");
-
+//////////////////
+//////////////////
 
 
 
@@ -33,6 +34,8 @@ console.log(likes(['Peter']), 'Peter likes this');
 console.log(likes(['Jacob', 'Alex']), 'Jacob and Alex like this');
 console.log(likes(['Max', 'John', 'Mark']), 'Max, John and Mark like this');
 console.log(likes(['Alex', 'Jacob', 'Mark', 'Max']), 'Alex, Jacob and 2 others like this');
+//////////////////
+//////////////////
 
 
 
@@ -43,10 +46,83 @@ function findOutlier(integers){
     var even = integers.filter(num => num%2 === 0);
     var odd = integers.filter(num => num%2 !== 0);
     return even.length === 1 ? even[0] : odd[0];
-  }
+}
   
   console.log(findOutlier([0, 1, 2]), 1);
   console.log(findOutlier([1, 2, 3]), 2);
   console.log(findOutlier([2,6,8,10,3]), 3);
   console.log(findOutlier([0,0,3,0,0]), 3);
   console.log(findOutlier([1,1,0,1,1]), 0);
+  //////////////////
+  //////////////////
+
+
+
+
+// This function will take a string and return a new string where each letter will reapeat by its position
+// Convert the string to uppercase and split into an array
+// Iterate over the array adding a letter for each iteration
+// Join the array with a - and return
+function accum(s) {
+	let charArr = s.toUpperCase().split("");
+	const chars = [...charArr];
+	for (let i=0; i<charArr.length-1; i++) {
+		for(let j=i+1; j<charArr.length; j++) {
+			charArr[j] += chars[j].toLowerCase();
+		}
+	}
+	return charArr.join("-");
+}
+
+console.log(accum("ZpglnRxqenU"), "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu");
+console.log(accum("NyffsGeyylB"), "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb");
+console.log(accum("MjtkuBovqrU"), "M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu");
+console.log(accum("EvidjUnokmM"), "E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm");
+console.log(accum("HbideVbxncC"), "H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc");
+//////////////////
+//////////////////
+
+
+
+
+// This function will get the middle character(s) of a string
+// Split string and check the length. If even return the two middle characters
+// If odd return the only middle character
+function getMiddle(s) {
+	let arr = s.split("");
+	return arr.length%2 === 0 ? 
+		`${arr[arr.length/2-1]}${arr[arr.length/2]}` : 
+		`${arr[Math.floor(arr.length/2)]}`;
+}
+
+console.log(getMiddle("test"),"es");
+console.log(getMiddle("testing"),"t");
+console.log(getMiddle("middle"),"dd");
+console.log(getMiddle("A"),"A");
+//////////////////
+//////////////////
+
+
+
+
+// This function will take in a string and return each letters position in the alphabet. Numbers and special characters removed
+// Use regex to remove anything that is not an alphabet character
+// Turn this new string to all lowercase, split to an array and map over each char
+// For each char convert to integer at position in alphabet and push to answer arr 
+// Join the arr to convert back to a string and return
+function alphabetPosition(text) {
+	let answer = [];
+	text.replace(/[^A-Za-z]/g, "")
+		.toLowerCase()
+		.split("")
+		.map(char => {
+			answer.push(char.charCodeAt(0) - 96);
+		});
+	return answer.join(" ");
+}
+
+console.log(alphabetPosition("The sunset sets at twelve o' clock."), "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11");
+console.log(alphabetPosition("The narwhal bacons at midnight."), "20 8 5 14 1 18 23 8 1 12 2 1 3 15 14 19 1 20 13 9 4 14 9 7 8 20");
+//////////////////
+//////////////////
+
