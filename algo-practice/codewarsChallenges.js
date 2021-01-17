@@ -126,3 +126,58 @@ console.log(alphabetPosition("The narwhal bacons at midnight."), "20 8 5 14 1 18
 //////////////////
 //////////////////
 
+
+
+
+
+function spinWords(str){
+	let answer = [];
+	str.split(" ").forEach(word => {
+		word.length > 4 ? answer.push(word.split("").reverse().join("")) :
+			answer.push(word);
+	})
+	
+	return answer.join(" ");
+}
+
+console.log(spinWords("Welcome"), "emocleW");
+console.log(spinWords("Hey fellow warriors"), "Hey wollef sroirraw");
+console.log(spinWords("This is a test"), "This is a test");
+console.log(spinWords("This is another test"), "This is rehtona test");
+console.log(spinWords("You are almost to the last test"), "You are tsomla to the last test");
+console.log(spinWords("Just kidding there is still one more"), "Just gniddik ereht is llits one more");
+console.log(spinWords("Seriously this is the last one"), "ylsuoireS this is the last one");
+
+
+
+
+
+
+function isValidWalk(walk) {
+		let count = 0;
+		walk.forEach(item => {
+			switch (item) {
+				case 'n': count++; break
+				case 's': count--; break
+				case 'e': count += 2; break
+				case 'w': count -= 2; break
+			}
+			// if (item == "n") {
+			// 	return count++;
+			// } else if (item == "e") {
+			// 	return count += 2;
+			// } else if (item == "w") {
+			// 	return count -= 2;
+			// } else {
+			// 	return count--;
+			// }
+		})
+	return walk.length === 10 && count === 0;
+}
+
+console.log(isValidWalk(['n','s','n','s','n','s','n','s','n','s']), 'should return true');
+console.log(isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']), 'should return false');
+console.log(isValidWalk(['w']), 'should return false');
+console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']), 'should return false');
+//////////////////
+//////////////////

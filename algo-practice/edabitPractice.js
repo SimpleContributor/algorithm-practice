@@ -243,3 +243,33 @@ console.log(nearestVowel("y"), "u");
 console.log(nearestVowel("z"), "u");
 ///////////////////////////////
 ///////////////////////////////
+
+
+
+
+
+function calculateScore(games) {
+	let wins = [0, 0];
+	games.forEach(game => {
+		if (game[0] === 'R' && game[1] !== 'R') {
+			game[1] === 'S' ? wins[0]++ : wins[1]++;
+		} else if (game[0] === 'P' && game[1] !== 'P') {
+			game[1] === 'R' ? wins[0]++ : wins[1]++;
+		} else if (game[0] === 'S' && game[1] !== 'S') {
+			game[1] === 'P' ? wins[0]++ : wins[1]++;
+		}
+	})
+	
+	return wins[0] > wins[1] ? "Abigail" : 
+		wins[0] < wins[1] ? "Benson" :
+		"Tie"
+}
+
+console.log(calculateScore([['R', 'P'], ['R', 'S'], ['S', 'P']]),  "Abigail");
+console.log(calculateScore([['R', 'R'], ['S', 'S']]), "Tie");
+console.log(calculateScore([['S', 'R'], ['R', 'S'], ['R', 'R']]), "Tie");
+console.log(calculateScore([['S', 'R'], ['P', 'R']]), "Tie");
+console.log(calculateScore([['S', 'S'], ['S', 'P'], ['R', 'S'], ['S', 'R'], ['R', 'R']]), "Abigail");
+console.log(calculateScore([['S', 'R'], ['S', 'R'], ['S', 'R'], ['R', 'S'], ['R', 'S']]), "Benson");
+///////////////////////////////
+///////////////////////////////
