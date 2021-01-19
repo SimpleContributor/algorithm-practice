@@ -181,3 +181,52 @@ console.log(isValidWalk(['w']), 'should return false');
 console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']), 'should return false');
 //////////////////
 //////////////////
+
+
+
+
+
+function inArray(arr1,arr2){
+	// let answer = [];
+	// for (let i = 0; i < array1.length; i++) {
+	// 	for (let j = 0; j < array2.length; j++) {
+	// 		if (array2[j].indexOf(array1[i]) >= 0 && answer.indexOf(array1[i]) < 0) {
+	// 			answer.push(array1[i]);
+	// 		}
+	// 	}
+	// }
+	// return answer.sort();
+	
+	return arr1.filter(needle => {
+    return arr2.some(haystack => {
+      return haystack.indexOf(needle) > -1;
+    });
+  }).sort();
+}
+
+console.log(inArray(["xyz", "live", "strong"], ["lively", "alive", "harp", "sharp", "armstrong"]), ["live", "strong"])
+console.log(inArray(["live", "strong", "arp"], ["lively", "alive", "harp", "sharp", "armstrong"]), ["arp", "live", "strong"])
+console.log(inArray(["tarp", "mice", "bull"], ["lively", "alive", "harp", "sharp", "armstrong"]), [])
+//////////////////
+//////////////////
+
+
+
+
+
+const isPrime = num => {
+	for (let i = 2, sq = Math.sqrt(num); i <= sq; i++) {
+		if (num % i === 0) return false;
+	}
+	return num > 1;
+}
+
+console.log(isPrime(0),  false, "0 is not prime");
+console.log(isPrime(1),  false, "1 is not prime");
+console.log(isPrime(2),  true, "2 is prime");
+console.log(isPrime(73), true, "73 is prime");
+console.log(isPrime(75), false, "75 is not prime");
+console.log(isPrime(-1), false, "-1 is not prime");
+console.log(isPrime(5099), true, "5099 is prime");
+//////////////////
+//////////////////
