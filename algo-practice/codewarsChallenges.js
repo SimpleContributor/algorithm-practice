@@ -130,6 +130,8 @@ console.log(alphabetPosition("The narwhal bacons at midnight."), "20 8 5 14 1 18
 
 
 
+// This function will take in a string and reverse the characters of any word larger than 4 characters
+// then return the new string
 function spinWords(str){
 	let answer = [];
 	str.split(" ").forEach(word => {
@@ -147,12 +149,14 @@ console.log(spinWords("This is another test"), "This is rehtona test");
 console.log(spinWords("You are almost to the last test"), "You are tsomla to the last test");
 console.log(spinWords("Just kidding there is still one more"), "Just gniddik ereht is llits one more");
 console.log(spinWords("Seriously this is the last one"), "ylsuoireS this is the last one");
+//////////////////
+//////////////////
 
 
 
 
-
-
+// This function will take an array of characters n, s, w, e and determine when these
+// paths are followed in a perfect grid if the user will return to the start
 function isValidWalk(walk) {
 		let count = 0;
 		walk.forEach(item => {
@@ -186,6 +190,8 @@ console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']), 'should retu
 
 
 
+// This function will take two arrays of strings and determine which words in arr1 match a word
+// or part of a word in arr2 and returns an arr of words from arr1 that match
 function inArray(arr1,arr2){
 	// let answer = [];
 	// for (let i = 0; i < array1.length; i++) {
@@ -214,6 +220,8 @@ console.log(inArray(["tarp", "mice", "bull"], ["lively", "alive", "harp", "sharp
 
 
 
+// This function will take in a number and determine whether or not it is prime
+// To reduce complexity the loop only iterates to the square root of the num
 const isPrime = num => {
 	for (let i = 2, sq = Math.sqrt(num); i <= sq; i++) {
 		if (num % i === 0) return false;
@@ -230,3 +238,47 @@ console.log(isPrime(-1), false, "-1 is not prime");
 console.log(isPrime(5099), true, "5099 is prime");
 //////////////////
 //////////////////
+
+
+
+
+// This function will take a string of parenthesis and determine if they are valid meaning
+// every opening '(' will have a closing ')'
+function validParentheses(parens){	
+	let openParen = parens.match(/\(/g);
+	let closeParen = parens.match(/\)/g);
+
+	if (closeParen == null || openParen == null) return false;
+	if (parens.charAt() === ")" || parens.charAt(parens.length-1) === "(") return false;
+	
+	return openParen.length === closeParen.length;
+}
+
+console.log(validParentheses( "()" ), true);
+console.log(validParentheses( ")(())(" ), false);
+//////////////////
+//////////////////
+
+
+
+
+// This function will take a string of numbers and find the outlier. All but one number in the argument will
+// either be even or odd. Return the position of the outlier plus one so the starting number is indexed at 1.
+function iqTest(numbers){
+	let even = [];
+	let odd = [];
+	let numArr = numbers.split(" ")
+	numArr.forEach(num => {
+		num % 2 == 0 ? even.push(num) : odd.push(num);
+	})
+  	return odd.length === 1 ? 
+		numArr.findIndex(n => n == odd[0]) + 1 : 
+		numArr.findIndex(n => n == even[0]) + 1;
+}
+  
+console.log(iqTest("2 4 7 8 10"),3);
+console.log(iqTest("1 2 2"), 1);
+console.log(iqTest("1 2 1 1"), 2);
+  //////////////////
+//////////////////
+  
