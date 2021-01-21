@@ -273,3 +273,32 @@ console.log(calculateScore([['S', 'S'], ['S', 'P'], ['R', 'S'], ['S', 'R'], ['R'
 console.log(calculateScore([['S', 'R'], ['S', 'R'], ['S', 'R'], ['R', 'S'], ['R', 'S']]), "Benson");
 ///////////////////////////////
 ///////////////////////////////
+
+
+
+
+// This function will take an array of digits representing how many numbers are present at that
+// index from 0-9. These will be compared to an arr to see if the arr has the alloted amount of 
+// digits. i.e. digits = [0, 1, 2, 2, 3, ...] will have zero 0's, one 1, two 2's, two 3's, 
+// three 4's, etc. 
+function canBuild(digits, arr) {
+	if (arr.length === 0) return true;
+	arr = arr.join("").split("");
+	let boolArr = [];
+	
+	for (let i = 0; i < arr.length - 1; i++) {
+		let numL = arr.filter(num => num == i).length;
+		boolArr.push(numL <= digits[i]);
+	}
+	return boolArr.every(val => val == true);
+}
+
+console.log(canBuild([0, 0, 0, 0, 0, 0, 0, 0, 0, 0], []), true);
+console.log(canBuild([1, 1, 0, 0, 0, 0, 0, 0, 1, 0], [1, 8]), true);
+console.log(canBuild([1, 1, 0, 0, 0, 0, 0, 0, 1, 0], [1, 80]), true);
+console.log(canBuild([0, 1, 2, 2, 3, 0, 0, 0, 1, 1], [123, 444, 92]), true);
+console.log(canBuild([1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [10, 23, 45, 6789]), true);
+console.log(canBuild([0, 2, 3, 0, 5, 0, 0, 0, 0, 1], [11, 2, 22, 49, 444, 4]), true);
+console.log(canBuild([1, 1, 0, 0, 0, 0, 0, 0, 1, 0], [1, 80, 0]), false);
+///////////////////////////////
+///////////////////////////////
