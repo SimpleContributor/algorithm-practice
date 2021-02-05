@@ -279,6 +279,109 @@ function iqTest(numbers){
 console.log(iqTest("2 4 7 8 10"),3);
 console.log(iqTest("1 2 2"), 1);
 console.log(iqTest("1 2 1 1"), 2);
-  //////////////////
 //////////////////
-  
+//////////////////
+
+
+
+
+
+// This function will take in a number 'n' and find how many trailing 0s
+//  there are in the factorial of 'n'.
+function zeros (n) {
+	let count = 0;
+	for (let i = 5; n/i >= 1; i *= 5) {
+		count += Math.floor(n/i);
+	}
+	return count;
+}
+	
+
+console.log(zeros(0), 0, "Testing with n = 0");
+console.log(zeros(5), 1, "Testing with n = 5");
+console.log(zeros(6), 1, "Testing with n = 6");
+console.log(zeros(10))
+console.log(zeros(30), 7, "Testing with n = 30");
+//////////////////
+//////////////////
+
+
+
+
+
+
+// This function will take a string of jumbled letters (str1) and
+//  check if str2 can be constructed from the letters in str1
+function scramble(str1, str2) {
+	
+	for (let i = 0; i < str2.length; i++) {
+		if (str1.indexOf(str2.charAt(i)) === -1) return false;
+	}
+	return true;
+	// str2.split(" ").filter(s2 => {
+	// 	return str1.split(" ").some(s2);
+	// })
+	
+// 	if (str2.length > str1.length) return false;
+	
+// 	str1 = str1.split("");
+// 	str2 = str2.split("");
+// 	let answer = [];
+	
+// 	str2.forEach(str2C => {
+// 		answer.push(str1.filter(str1C => str1C === str2C).length >= str2.filter(char => char === str2C).length);
+// 	})
+
+// 	return !answer.includes(false);
+	
+// 	str2 = str2.split("");
+// 	let answer = [];
+// 	if (str2.length > str1.length) {
+// 		return false;
+// 	}
+
+// 	for (let i = 0; i < str2.length; i++) {
+// 			answer.push(str1.includes(str2[i]))
+// 	}
+// 	console.log(answer)
+// 	return answer.every(a => a == true);
+}
+
+console.log(scramble('rkqodlw','world'),true);
+console.log(scramble('cedewaraaossoqqyt','codewars'),true);
+console.log(scramble('katas','steak'),false);
+console.log(scramble('scriptjava','javascript'),true);
+console.log(scramble('scriptingjava','javascript'),true);
+console.log(scramble('scriptsjava','javascripts'),true);
+console.log(scramble('jscripts','javascript'),false);
+console.log(scramble('aabbcamaomsccdd','commas'),true);
+//////////////////
+//////////////////
+
+
+
+
+
+
+// This function will take an array on names that represent people in line
+//  and a number 'r' that represents how many cans of cola are consumed.
+//  The way the queue works is that names[0] ("Sheldon") drinks the first soda r=1
+//	and doubles himself to 2 Sheldons that are moved to the back of the line. After
+//	3 sodas are consumed the names array should look like this:
+//  ["Rajesh", "Howard", "Sheldon", "Sheldon", "Leonard", "Leonard", "Penny", "Penny"]
+
+// The goal is to return the name of whoever consumes the n-th cola. r is 1 indexed
+function whoIsNext(names, r){
+	r = r - 1;
+	
+	while (r >= names.length) {
+		r = Math.floor((r - names.length) / 2)
+	}
+	
+	return names[r];
+}
+
+let names = ["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"];
+console.log(whoIsNext(names, 7), "Sheldon");
+//////////////////
+//////////////////
