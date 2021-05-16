@@ -302,3 +302,53 @@ console.log(canBuild([0, 2, 3, 0, 5, 0, 0, 0, 0, 1], [11, 2, 22, 49, 444, 4]), t
 console.log(canBuild([1, 1, 0, 0, 0, 0, 0, 0, 1, 0], [1, 80, 0]), false);
 ///////////////////////////////
 ///////////////////////////////
+
+
+
+// This class will take in a number and see how many times one, three and nine can fit into the number.
+class OnesThreesNines {
+	constructor(num) {
+		this.num = num;
+	}
+	
+	get ones() {
+		return Math.floor(this.num/1);
+	}
+	
+	get threes() {
+		return Math.floor(this.num/3);
+	}
+	
+	get nines() {
+		return Math.floor(this.num/9);
+	}
+}
+///////////////////////////////
+///////////////////////////////
+
+
+// This function will see how many moves it will take to solve the Tower of Hanoi based 
+// on the amount of discs.
+function towerHanoi(discs) {
+	return Math.pow(2, discs) - 1;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+// This function will take an array of integers and check if it has any boomerangs
+// Example: [3, 7, 3, 2, 1, 5, 1, 2, 2, -2, 2] has the boomerangs
+// [3, 7, 3], [1, 5, 1], [2, -2, 2]
+function countBoomerangs(arr) {
+	let count = 0;
+	
+	for (let i = 0; i < arr.length -1; i++) {
+		if (arr[i] != arr[i+1] && arr[i] === arr[i+2]) {
+				count++;
+		}
+	}
+	
+	return count;
+}
+///////////////////////////////
+///////////////////////////////k
