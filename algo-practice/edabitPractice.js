@@ -354,7 +354,7 @@ function countBoomerangs(arr) {
 ///////////////////////////////
 
 
-// Hold Your Breath! Published by Werdna
+// Hold Your Breath!, Published by Werdna
 // This function takes a person on a dangerous walk.
 // The given arr contains integers that can be negative, 0, or positive.
 // The numbers represent the altitude, with 0+ being 'above water.'
@@ -382,7 +382,7 @@ function divingMinigame(arr) {
 ///////////////////////////////
 
 
-// Oddish vs. Evenish Published by Helen Yu
+// Oddish vs. Evenish, Published by Helen Yu
 // This function will return a string based on whether the sum of each number in num is odd or even.
 function oddishOrEvenish(num) {
 	let stringArr = num.toString().split('');
@@ -398,3 +398,49 @@ function oddishOrEvenish(num) {
 ///////////////////////////////
 ///////////////////////////////
 
+
+// How Many Days Between Two Dates, Published by Alon
+// This function will take in two new Dates and return the amount of days between
+// the two dates.
+const getDays = (d1, d2) => Math.round(Math.abs((d1-d2)/(24*60*60*1000)));
+///////////////////////////////
+///////////////////////////////
+
+
+// Converting Objects to Arrays, Published by Matt
+// This function takes an object and converts it to a nested array.
+// Each nested array will hold one key-value pair
+function toArray(obj) {
+	let arr = [];
+	for (const [key, value] of Object.entries(obj)) {
+		arr.push([key, value])
+		console.log(arr);	
+	}
+	return arr;
+}
+
+// A more clever function by Aditya Tripathi
+function toArray(obj) {
+	return Object.entries(obj);
+}
+///////////////////////////////
+///////////////////////////////
+
+
+// Concatenate Variable Number of Input Arrays, Published by Helen Yu
+// This function will take in n amount of arguments that are each an array.
+// The point is to concat those into one single array.
+const concat = (...args) => [...args].flat();
+
+// Can also be solved with this
+const concat = (...args) => args.flat();
+///////////////////////////////
+///////////////////////////////
+
+
+// Length of a Nested Array, Published by Helen Yu
+// This function will find how many items exist in a nested array
+// The array can be infinitely nested
+const getLength = arr => arr.flat(Infinity).length;
+///////////////////////////////
+///////////////////////////////
