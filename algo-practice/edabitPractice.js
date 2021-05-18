@@ -351,4 +351,50 @@ function countBoomerangs(arr) {
 	return count;
 }
 ///////////////////////////////
-///////////////////////////////k
+///////////////////////////////
+
+
+// Hold Your Breath! Published by Werdna
+// This function takes a person on a dangerous walk.
+// The given arr contains integers that can be negative, 0, or positive.
+// The numbers represent the altitude, with 0+ being 'above water.'
+// The walker starts with 10 breath (or health) which is also the maximum allowed.
+// If they go 'under water' they lose two health. Going above will give back four health.
+// Once health reaches zero the walker dies.
+// Return whether or not the walker survives.
+function divingMinigame(arr) {
+	let breath = 10;
+	
+	arr.forEach(num => {
+		if (breath > 10) breath = 10;
+		if (breath <= 0) return false;
+		
+		if (num >= 0) {
+			breath = breath + 4;
+		} else if (num < 0) {
+			breath = breath - 2;
+		}
+	})
+	
+	return breath > 0;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+// Oddish vs. Evenish Published by Helen Yu
+// This function will return a string based on whether the sum of each number in num is odd or even.
+function oddishOrEvenish(num) {
+	let stringArr = num.toString().split('');
+	let numArr = Array.from(stringArr, Number);
+	let numSum = (accumulator, currentValue) => accumulator + currentValue;
+	let sum = numArr.reduce(numSum);
+	return sum % 2 === 0 ? "Evenish" : "Oddish";
+}
+// A more clever function by K750i
+function oddishOrEvenish(num) {
+	return [...String(num)].map(Number).reduce((a,v) => a + v) % 2 ? 'Oddish' : 'Evenish'
+}
+///////////////////////////////
+///////////////////////////////
+
