@@ -11,6 +11,7 @@ console.log(areaOfCountry("Russia", 17098242), "Russia is 11.48% of the total wo
 
 
 
+
 // Algo to find the second largest number in an array
 function secondLargest(arr) {
 	return arr.sort((a, b) => b - a)[1];
@@ -20,6 +21,7 @@ console.log(secondLargest([10, 40, 30, 20, 50]), 40);
 console.log(secondLargest([25, 143, 89, 13, 105]), 105);
 ///////////////////////////////
 ///////////////////////////////
+
 
 
 
@@ -37,6 +39,8 @@ console.log(getHashTags("How the Avocado Became the Fruit of the Global Trade"),
 console.log(getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year"), ["#christmas", "#probably", "#will"])
 ///////////////////////////////
 ///////////////////////////////
+
+
 
 
 // This function will take a single word string of random consequtive letters and
@@ -95,6 +99,8 @@ console.log(distanceToNearestVowel("totally"), [1, 0, 1, 0, 1, 2, 3])
 ///////////////////////////////
 
 
+
+
 // This function will take in an arr of numbers and a string 
 // The string will be one of three things: Asc (ascending), Des (descending), and None
 // Return the array in the given order. None will not change the order in any way
@@ -110,6 +116,8 @@ console.log(ascDesNone([1, 2, 2, 2, 2, 2, 2], "Des"), [2, 2, 2, 2, 2, 2, 1]);
 console.log(ascDesNone([9, 7, 43, 11, 16, 111, 19], "Asc"), [7, 9, 11, 16, 19, 43, 111]);
 ///////////////////////////////
 ///////////////////////////////
+
+
 
 
 // This function will take in a 4 digit year and return how times Friday the 13th occurs in
@@ -136,6 +144,8 @@ console.log(howUnlucky(2008), 1)
 ///////////////////////////////
 
 
+
+
 // This function will return the length of the array when str is split and filtered by myChar
 function charCount(myChar, str) {
 	// let count = 0;
@@ -152,6 +162,7 @@ console.log(charCount('c', 'Chamber of secrets'), 1);
 console.log(charCount('f', 'frank and his friends have offered five foxes for sale'), 7);
 ///////////////////////////////
 ///////////////////////////////
+
 
 
 
@@ -173,6 +184,7 @@ console.log(largestSwap(53), true, '53 > 35, so largest swap.');
 console.log(largestSwap(99), true, 'Cannot do better, so largest swap.');
 ///////////////////////////////
 ///////////////////////////////
+
 
 
 
@@ -247,7 +259,6 @@ console.log(nearestVowel("z"), "u");
 
 
 
-
 function calculateScore(games) {
 	let wins = [0, 0];
 	games.forEach(game => {
@@ -305,6 +316,7 @@ console.log(canBuild([1, 1, 0, 0, 0, 0, 0, 0, 1, 0], [1, 80, 0]), false);
 
 
 
+
 // This class will take in a number and see how many times one, three and nine can fit into the number.
 class OnesThreesNines {
 	constructor(num) {
@@ -327,6 +339,8 @@ class OnesThreesNines {
 ///////////////////////////////
 
 
+
+
 // This function will see how many moves it will take to solve the Tower of Hanoi based 
 // on the amount of discs.
 function towerHanoi(discs) {
@@ -334,6 +348,8 @@ function towerHanoi(discs) {
 }
 ///////////////////////////////
 ///////////////////////////////
+
+
 
 
 // This function will take an array of integers and check if it has any boomerangs
@@ -352,6 +368,8 @@ function countBoomerangs(arr) {
 }
 ///////////////////////////////
 ///////////////////////////////
+
+
 
 
 // Hold Your Breath!, Published by Werdna
@@ -382,6 +400,8 @@ function divingMinigame(arr) {
 ///////////////////////////////
 
 
+
+
 // Oddish vs. Evenish, Published by Helen Yu
 // This function will return a string based on whether the sum of each number in num is odd or even.
 function oddishOrEvenish(num) {
@@ -399,12 +419,16 @@ function oddishOrEvenish(num) {
 ///////////////////////////////
 
 
+
+
 // How Many Days Between Two Dates, Published by Alon
 // This function will take in two new Dates and return the amount of days between
 // the two dates.
 const getDays = (d1, d2) => Math.round(Math.abs((d1-d2)/(24*60*60*1000)));
 ///////////////////////////////
 ///////////////////////////////
+
+
 
 
 // Converting Objects to Arrays, Published by Matt
@@ -418,7 +442,6 @@ function toArray(obj) {
 	}
 	return arr;
 }
-
 // A more clever function by Aditya Tripathi
 function toArray(obj) {
 	return Object.entries(obj);
@@ -427,20 +450,153 @@ function toArray(obj) {
 ///////////////////////////////
 
 
+
+
 // Concatenate Variable Number of Input Arrays, Published by Helen Yu
 // This function will take in n amount of arguments that are each an array.
 // The point is to concat those into one single array.
 const concat = (...args) => [...args].flat();
-
 // Can also be solved with this
 const concat = (...args) => args.flat();
 ///////////////////////////////
 ///////////////////////////////
 
 
+
+
 // Length of a Nested Array, Published by Helen Yu
 // This function will find how many items exist in a nested array
 // The array can be infinitely nested
 const getLength = arr => arr.flat(Infinity).length;
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Track the Robot (Part 2), Published by Jon Ingram
+// See where a robot will be at the end of their path.
+// Start at 0,0 on a 2D grid
+// The first number in [...steps] will always take the robot North
+// After each move the robot turns 90 degrees clockwise
+// Return the robots final position on the grid
+function trackRobot(...steps) {
+	let stepArr = [...steps];
+	let dest = [0, 0];
+	
+	let eastWest = [];
+	for (var i = 1; i < stepArr.length; i = i + 2) {
+		eastWest.push(stepArr[i]);
+	}
+	
+	var northSouth = [];
+	for (var i = 0; i < stepArr.length; i = i + 2) {
+		northSouth.push(stepArr[i]);
+	}
+	
+	eastWest.forEach((num, i) => {
+		i % 2 === 0 ? dest[0] += num : dest[0] -= num;
+	})
+	
+	northSouth.forEach((num, i) => {
+		i % 2 === 0 ? dest[1] += num : dest[1] -= num;
+	})
+	
+	return dest;
+}
+// A more clever function by soilblue
+function trackRobot(...steps) {
+	var r = [0,0];
+	for (var i in steps) {
+		var d = i % 4;
+	  if (d == 0) r[1] += steps[i];
+	  if (d == 1) r[0] += steps[i];
+	  if (d == 2) r[1] -= steps[i];
+	  if (d == 3) r[0] -= steps[i];
+	}
+	return r;
+}
+// Another by Thijs Vogelsang
+function trackRobot(...steps) {
+	return steps.reduce((a, c, i) => {
+		a[(i+1) % 2] += (i % 4 > 1 ? -c : c); 
+		return a;
+	}, [0, 0])
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Triangular Number Sequence, Published by Matt
+function triangle(n) {
+	let arr = Array.from(Array(n), (x, index) => index + 1);
+	return arr.reduce((a, b) => a + b, 0);
+}
+
+
+
+
+// A more clever solution by er0s
+// This solution is from the formula xn = n(n+1)/2;
+// xn means 'dots in triangle n'
+const triangle = n => n * (n + 1) / 2;
+///////////////////////////////
+///////////////////////////////
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Check If the Brick Fits through the Hole, Published by Matt
+// given a 3D brick (a,b,c) check to see if it will fit through a 2D hole (w,h)
+// the brick can be rotated
+const doesBrickFit = (a,b,c, w,h) => a*b <= w*h || a*c <= w*h || b*c <= w*h;
+///////////////////////////////
+///////////////////////////////
+
+// RegExp: Validate Pin, Published by Factor
+const myRegExp = new RegExp(/^(\d{4}|\d{6})$/);
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Function Factory, Published by mbbentley
+function makePlusFunction(baseNum) {
+	return function addBase(num) {
+		return num + baseNum;
+	}
+}
+// A more clever solution by Pustur
+const makePlusFunction = baseNum => num => baseNum + num;
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Integer in Range?, Published by Matt
+function intWithinBounds(n, lower, upper) {
+	return Number.isInteger(n) && n >= lower && n < upper;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Is the Number a Repdigit, Published by Eduard Diakunenko
+function isRepdigit(num) {
+	let numSplit = num.toString().split('');
+	return num >= 0 && numSplit.every(num => num === numSplit[0]);
+}
+// Eduard's answer
+function isRepdigit(num) {
+	return new Set('' + num).size === 1
+}
+// A similar function by er0s
+const isRepdigit = n => new Set(`${n}`).size === 1;
 ///////////////////////////////
 ///////////////////////////////
