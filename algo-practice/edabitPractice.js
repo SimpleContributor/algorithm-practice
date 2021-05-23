@@ -604,22 +604,6 @@ const isRepdigit = n => new Set(`${n}`).size === 1;
 
 
 ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
-
-/////////////////////////////////////////////////////////////////////////////////////////
-// Longest Word in a 7 Segment Display, Published by Matt
-const longest7SegmentWord = arr => {
-	return arr
-		.sort((a,b) => b.length - a.length)
-		.filter(wrd => !/[kmvwx]/gi.test(wrd))[0] || "";
-}
-/////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////
-///////////////////////////////
-
-
-
-
-
 // LCM of Two Numbers, Published by Helen Yu
 function lcm(n1, n2) {
 	let max = Math.max(n1, n2);
@@ -632,3 +616,30 @@ function lcm(n1, n2) {
 }
 ///////////////////////////////
 ///////////////////////////////
+
+
+
+
+// Array of Multiples, Published by Raka Raka
+function arrayOfMultiples (num, length) {
+	let arr = [];
+	for (let i = 1; i <= length; i++) {
+		arr.push(num*i);
+	}
+	return arr;
+}
+// A more clever solution by Pustur
+const arrayOfMultiples = (num, length) =>
+  Array.from({ length }, (_, i) => num * (i + 1));
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Guess the Sequence, Published by Mubashir Hassan
+const guessSequence = n => 30*(n**2) + 60*n;
+// Publishers solution
+function guessSequence(n){
+	return n * (n + 2) * 30;
+  }
