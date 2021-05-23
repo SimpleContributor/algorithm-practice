@@ -547,7 +547,7 @@ const triangle = n => n * (n + 1) / 2;
 
 
 
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+
 // Check If the Brick Fits through the Hole, Published by Matt
 // given a 3D brick (a,b,c) check to see if it will fit through a 2D hole (w,h)
 // the brick can be rotated
@@ -598,5 +598,37 @@ function isRepdigit(num) {
 }
 // A similar function by er0s
 const isRepdigit = n => new Set(`${n}`).size === 1;
+///////////////////////////////
+///////////////////////////////
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Longest Word in a 7 Segment Display, Published by Matt
+const longest7SegmentWord = arr => {
+	return arr
+		.sort((a,b) => b.length - a.length)
+		.filter(wrd => !/[kmvwx]/gi.test(wrd))[0] || "";
+}
+/////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+// LCM of Two Numbers, Published by Helen Yu
+function lcm(n1, n2) {
+	let max = Math.max(n1, n2);
+	let min = Math.min(n1, n2);
+	for (let i = 1; i < max; i++) {
+		if (max*i % min === 0) {
+			return max*i;
+		}
+	}
+}
 ///////////////////////////////
 ///////////////////////////////
