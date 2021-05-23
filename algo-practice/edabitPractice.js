@@ -603,7 +603,7 @@ const isRepdigit = n => new Set(`${n}`).size === 1;
 
 
 
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+
 // LCM of Two Numbers, Published by Helen Yu
 function lcm(n1, n2) {
 	let max = Math.max(n1, n2);
@@ -643,3 +643,100 @@ const guessSequence = n => 30*(n**2) + 60*n;
 function guessSequence(n){
 	return n * (n + 2) * 30;
   }
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Integer Digits Count, Published by Deep Xavier
+  function count(n) {
+	return Math.floor(Math.log10(Math.abs(n+1)) + 1);
+}
+// Publishers solution
+const count = n => n == 0 ? 1 : Math.floor(Math.log10(Math.abs(n))) + 1
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Square Every Digit, Published by Enkuryo
+function squareDigits(n) {
+	return Number(n.toString().split("").map(Number).map(num => num**2).join(''));
+}
+// Publishers solution
+function squareDigits(n) {
+	return +[...String(n)].map(x => x*x).join('');
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Travelling Salesman Problem, Published by jordan sumitomo
+function paths(n) {
+	if (n === 0 || n === 1)
+    return 1;
+  for (var i = n - 1; i >= 1; i--) {
+    n *= i;
+  }
+  return n;
+}
+// A more clever solution by Euphonic Sounds
+const paths = n => !n || n * paths(--n);
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Sorting Time, Published by Mubashir Hassan
+// The point of the challenge was to sort an array of integers without using built in methods
+function sortArray(arr) {
+	for(let i=0; i<arr.length-1; i++) {
+		for(let j = i+1; j<arr.length; j++) {
+			if (arr[i] > arr[j]) {
+				let temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+	return arr;
+}
+// A more clever solution by Data Case
+function sortArray(a){
+	let r=[]
+	while(a.length>0){
+		r.push(a.splice(a.indexOf(Math.min(...a)),1))		
+	}
+	return r.flat()
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Numbers in Strings, Published by Alex Nemechek
+// The goal of this challenge is to return any element from an array that has numbers in the string
+// Bonus: Try solving this without regex
+// (["this is a test", "test1"]) ➞ ["test1"]
+// (["abc", "ab10c", "a10bc", "bcd"]) ➞ ["ab10c", "a10bc"]
+function numInStr(arr) {
+	return arr.filter(word => {
+		return word
+			.split('')
+			.some(y => Number.isInteger(Number(y)) && y != 0);
+	});
+}
+// Solution using regex by soilblue
+function numInStr(arr) {
+	return arr.filter(x=>/\d/.test(x));
+}
+///////////////////////////////
+///////////////////////////////
