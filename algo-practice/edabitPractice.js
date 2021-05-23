@@ -1,3 +1,5 @@
+// My edabit name: DonDracula
+
 // Algo to solve the total % landmass of a country given a name and area
 function areaOfCountry(name, area) {
 	let landmass = (area/148940000*100).toFixed(2) + "%";
