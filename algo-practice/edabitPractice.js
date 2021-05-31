@@ -652,7 +652,7 @@ function guessSequence(n){
 
 
 
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+
 // Integer Digits Count, Published by Deep Xavier
   function count(n) {
 	return Math.floor(Math.log10(Math.abs(n+1)) + 1);
@@ -739,6 +739,50 @@ function numInStr(arr) {
 // Solution using regex by soilblue
 function numInStr(arr) {
 	return arr.filter(x=>/\d/.test(x));
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Function Times 3, Published by BijogFc24
+// This function uses currying and is called with this syntax:
+// product(1,2)(1,1)(2,3);
+const product = (a,b) => (m,n) => (x,y) => a*m*x + b*n*y;
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Find Value in a Binary Tree, Published by BijogFc24
+const valueInTree = (tree, val) => tree.flat(Infinity).includes(val);
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// RegEx: Character Classes X - \W, Published by Isaac Pak
+// This regex will find all of the <div> tags in a string. Not the </div> end tags though.
+// Must include \W
+const REGEXP = /[^\/]div[\W]/g
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Bitwise Operator to Check Odd, Regular Expression to Check Even, Published by BijogFc24
+// Use Bitwise Operator (% operator disallowed)
+function isOdd(number) {
+	return (number & 1) ? "Yes" : "No";
+}
+// Use Regular Expression (% operator disallowed)
+function isEven(number) {
+	return number.match(/(2|4|6|8|0)$/) ? "Yes" : "No";
 }
 ///////////////////////////////
 ///////////////////////////////
