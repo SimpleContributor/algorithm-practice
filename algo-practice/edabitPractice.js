@@ -746,7 +746,6 @@ function numInStr(arr) {
 
 
 
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Function Times 3, Published by BijogFc24
 // This function uses currying and is called with this syntax:
 // product(1,2)(1,1)(2,3);
@@ -786,3 +785,34 @@ function isEven(number) {
 }
 ///////////////////////////////
 ///////////////////////////////
+
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Combinations, Published by Matt
+// H
+const combinations = (...items) => items.filter(n => n!==0).reduce((a, c) => a*c);
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Data Structures (1): Find Max of Sliding Window, Published by benmcl@shaw.ca
+// VH
+function windowMaxes(array, windowLength) {
+	let newArr = [];
+	
+  for (let i = 0; i < array.length - windowLength+1; i++) {
+		newArr.push(Math.max(...array.slice(i, i + windowLength)));
+	}
+	
+	return newArr;
+}
+///////////////////////////////
+///////////////////////////////
+
