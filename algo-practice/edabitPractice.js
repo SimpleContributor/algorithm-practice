@@ -651,8 +651,6 @@ function guessSequence(n){
 
 
 
-
-
 // Integer Digits Count, Published by Deep Xavier
   function count(n) {
 	return Math.floor(Math.log10(Math.abs(n+1)) + 1);
@@ -789,10 +787,6 @@ function isEven(number) {
 
 
 
-
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Combinations, Published by Matt
 // H
 const combinations = (...items) => items.filter(n => n!==0).reduce((a, c) => a*c);
@@ -816,3 +810,85 @@ function windowMaxes(array, windowLength) {
 ///////////////////////////////
 ///////////////////////////////
 
+
+
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Persistence, Published by Matt
+// VH
+function additivePersistence(n) {
+	let arr = n.toString().split('');
+	let count = 0;
+	
+	while (arr.length !== 1)	{
+		arr = arr.map(n => Number(n)).reduce((a,b) => a+b).toString().split('');
+		count++;
+	}
+		
+	return count;
+}
+
+function multiplicativePersistence(n) {
+	let arr = n.toString().split('');
+	let count = 0;
+	
+	while (arr.length !== 1)	{
+		arr = arr.map(n => Number(n)).reduce((a,b) => a*b).toString().split('');
+		count++;
+	}
+		
+	return count;
+}
+// A more clever solution by Ruud Peter Boelens
+// The test cases never had negative values, but this solution accounts for negatives as well.
+function additivePersistence(n) {
+	let count=0;
+	while(String(n).length>1){
+		n=[...String(n)].reduce((a, b)=>+a + +b);
+		count++;
+	}
+	return count;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Balanced Words, Published by Matt
+// VH
+function balanced(word) {
+	let arr = [...word];
+	arr.forEach((a, i) => {
+		arr[i] = word.charCodeAt(i) - 96;
+	})
+	if (word.length % 2 !== 0) {
+		arr.splice(Math.floor(word.length/2), 1);
+	}
+	let firstHalf = arr.slice(0, arr.length/2).reduce((a,b) => a + b);
+	let secondHalf = arr.slice(arr.length/2, arr.length).reduce((a,b) => a + b);
+	
+	return firstHalf === secondHalf;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Happy Numbers, Published by Jon Ingram
+// VH
+function happy(n) {
+	let seq = [...n.toString()].map(a => Number(a)**2).reduce((a,b) => a+b);
+	while(seq != 1 && seq != 4) {
+		seq = [...seq.toString()].map(a => Number(a)**2).reduce((a,b) => a+b);
+	}
+	return seq === 1;
+}
+///////////////////////////////
+///////////////////////////////
