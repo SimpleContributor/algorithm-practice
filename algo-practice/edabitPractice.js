@@ -813,12 +813,6 @@ function windowMaxes(array, windowLength) {
 
 
 
-
-
-
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Persistence, Published by Matt
 // VH
 function additivePersistence(n) {
@@ -889,6 +883,116 @@ function happy(n) {
 		seq = [...seq.toString()].map(a => Number(a)**2).reduce((a,b) => a+b);
 	}
 	return seq === 1;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Lemonade Stand, Published by BijogFc24
+/*
+At a lemonade stand, each lemonade costs $5. Customers are standing in a queue to buy from you, 
+and order one at a time (in the order specified by bills).
+
+Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill. You must provide 
+the correct change to each customer so that the net transaction is that the customer pays $5.
+
+Return true if and only if you can provide every customer with correct change.
+Examples:
+	lemonade([5, 5, 5, 10, 20]) ➞ true
+	lemonade([5, 5, 10, 10, 20]) ➞ false
+*/
+// VH
+function lemonade(bills) {
+	let bank = [0, 0, 0];
+	let open = true;
+	bills.forEach(bill => {
+		switch (bill) {
+			case 5:
+				bank[0]++;
+				break;
+			case 10:
+				bank[0] > 0 ? bank[0]-- && bank[1]++ : open = false;
+				break;
+			case 20:
+				bank[0] > 0 && bank[1] > 0 ? bank[0]-- && bank[1]-- && bank[2]++
+				: bank[0] > 2 ? bank[0] = bank[0]-3  && bank[2]++
+				: open = false;
+				break;
+		}
+	})
+	return open;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+// Can You Make the Numbers? Published by Helen Yu
+// VH
+/* 
+You are given an array representing the number of 0s, 1s, 2s, ..., 9s you have. The function will look like:
+
+	can_build([#0s, #1s, #2s, ..., #9s], [num1, num2, ...])
+
+Write a function that returns true if you can build the following numbers using only the digits you have.
+*/
+function canBuild(digits, arr) {
+	if (arr.length === 0) return true;
+	let hasDigits = true;
+	for (const num of arr) {
+		if (!hasDigits) break;
+		if (num.toString().length > 1) {
+			let numArr = [...num.toString()].map(x => Number(x));
+			numArr.forEach(n => {
+				digits[n] > 0 ? digits[n]-- : hasDigits = false;
+			})
+		} else {
+			digits[num] > 0 ? digits[num]-- : hasDigits = false;
+		}	
+	}
+return hasDigits;
+}
+// Here is some code I wrote before submit
+// I wanted it to be a little faster, so that is where the for...of loop comes in
+// The code below is similar in structure, but fails all of the falsey tests
+// I learned that there is no proper way to break a forEach loop, and that forEach is not 
+// the best tool for loop breaking behavior.
+
+// function canBuild(digits, arr) {
+// 	if (arr.length === 0) return true;
+// 	let hasDigits = true;
+	
+// 	arr.forEach(num => {
+// 		if (num.toString().length > 1) {
+// 			let numArr = [...num.toString()].map(x => Number(x));
+// 			numArr.forEach(n => {
+// 				digits[n] > 0 ? digits[n]-- : hasDigits = false;
+// 			})
+// 		} else {
+// 			digits[num] > 0 ? digits[num]-- : hasDigits = false;
+// 		}
+// 		if (!hasDigits) return false;
+// 	})
+	
+// 	return true;
+// }
+
+// A more clever solution by mbbentley
+// This solution will create a new array similar to digits and 
+// fill it with all of the numbers from arr
+// It then iterates over every number in the new array to make sure its
+// value is less than or equal to the value in the digits array
+function canBuild(digits, arr) {
+	let f = [...Array(10)].fill(0);
+	[...arr.join('')].forEach(v => f[v]++);
+	return f.every((v,i) => v <= digits[i]);
 }
 ///////////////////////////////
 ///////////////////////////////
