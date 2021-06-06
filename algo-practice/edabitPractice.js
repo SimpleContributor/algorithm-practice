@@ -890,11 +890,6 @@ function happy(n) {
 
 
 
-
-
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Lemonade Stand, Published by BijogFc24
 /*
 At a lemonade stand, each lemonade costs $5. Customers are standing in a queue to buy from you, 
@@ -993,6 +988,33 @@ function canBuild(digits, arr) {
 	let f = [...Array(10)].fill(0);
 	[...arr.join('')].forEach(v => f[v]++);
 	return f.every((v,i) => v <= digits[i]);
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Amount of Possible Combinations, Published by Matt
+// VH
+function combinations(k, n) {
+	let nFac = 1;
+	let kFac = 1;
+	let x = n;
+	let y = k;
+	while (x > n-k) {
+		nFac *= x;
+		x--;
+	}
+	while (y > 0) {
+		kFac *= y;
+		y--;
+	}
+	return Math.round(nFac/kFac);
 }
 ///////////////////////////////
 ///////////////////////////////
