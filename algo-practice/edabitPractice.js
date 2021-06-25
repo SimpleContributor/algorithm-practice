@@ -995,10 +995,6 @@ function canBuild(digits, arr) {
 
 
 
-
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Amount of Possible Combinations, Published by Matt
 // VH
 function combinations(k, n) {
@@ -1016,5 +1012,69 @@ function combinations(k, n) {
 	}
 	return Math.round(nFac/kFac);
 }
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Does the Triangle Fit into the Triangular Hole? Published by Matt
+// VH
+function doesTriangleFit(brick, hole) {
+	let brickMaxIdx = brick.indexOf(Math.max(...brick));
+	let brickMax = brick.splice(brickMaxIdx, 1);
+	let isBrickTriangle = brick.reduce((a,b) => a+b) > brickMax;
+	
+	let holeMaxIdx = hole.indexOf(Math.max(...hole));
+	let holeMax = hole.splice(holeMaxIdx, 1);
+	let isHoleTriangle = hole.reduce((a,b) => a+b) > holeMax;
+	
+	if (isBrickTriangle && isHoleTriangle) {
+		let b = brick.reduce((a,b) => a+b) + brickMax;
+		let h = hole.reduce((a,b) => a+b) + holeMax;
+		let bA = Math.sqrt(b * (b-brick[0]) * (b-brick[1]) * (b-brickMax));
+		let hA = Math.sqrt(h * (h-hole[0]) * (h-hole[1]) * (h-holeMax));
+		return bA <= hA;
+	} else {
+		return false;
+	}
+}
+// A more clever solution by Pustur
+const asc = (a, b) => a - b;
+
+const doesTriangleFit = (triangle, hole) => {
+  triangle.sort(asc);
+  hole.sort(asc);
+
+  return (
+    triangle[0] + triangle[1] > triangle[2] &&
+    hole[0] + hole[1] > hole[2] &&
+    [0, 1, 2].every(i => triangle[i] <= hole[i])
+  );
+};
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Maximize the First Number, Published by Helen Yu
+// VH
+function maxPossible(n1, n2) {
+	let n1Arr = n1.toString().split('').map(n => Number(n));
+	let n2Arr = n2.toString().split('').map(n => Number(n)).sort((a, b) => b-a);
+	n1Arr.forEach((num, i) => {
+		if (num < n2Arr[0]) {
+			n1Arr[i] = n2Arr[0];
+			n2Arr.shift();
+		};
+	});
+	return Number(n1Arr.join(''));
+};
 ///////////////////////////////
 ///////////////////////////////
