@@ -1018,11 +1018,6 @@ function combinations(k, n) {
 
 
 
-
-
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Does the Triangle Fit into the Triangular Hole? Published by Matt
 // VH
 function doesTriangleFit(brick, hole) {
@@ -1073,8 +1068,61 @@ function maxPossible(n1, n2) {
 			n1Arr[i] = n2Arr[0];
 			n2Arr.shift();
 		};
-	});
+	});o
 	return Number(n1Arr.join(''));
 };
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// The Frugal Gentleman, Published by Helen Yu
+// H
+function chosenWine(wines) {
+	return wines.length === 0 ? null
+		: wines.length === 1 ? wines[0].name
+		: wines.sort((a,b) => a.price - b.price)[1].name;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Burglary Series (12): Get Vodka Bottle, Published by Miguel Carvalho
+// H
+function getVodkaBottle(obj, num) {
+	return Object.entries(obj)
+		.filter(a => a[0].indexOf('Rammstein') !== -1)
+		.find(b => b[1] === num)[0];
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// The Actual Memory Size of your USB Flash Drive, Published by Mubashir Hassan
+// VH
+function actualMemorySize(ms) {
+	let actualStorage;
+	if ((/GB/).test(ms)) {
+		actualStorage = parseInt(ms) * 930;
+	} else {
+		actualStorage = Math.floor(parseInt(ms) *0.93);
+	}
+	
+	if (actualStorage > 1000) {
+		return (actualStorage / 1000).toFixed(2).toString()+'GB';
+	} else {
+		return (actualStorage).toString()+'MB';
+	}
+}
 ///////////////////////////////
 ///////////////////////////////
