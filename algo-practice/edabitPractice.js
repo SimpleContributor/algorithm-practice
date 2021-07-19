@@ -1077,11 +1077,6 @@ function maxPossible(n1, n2) {
 
 
 
-
-
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // The Frugal Gentleman, Published by Helen Yu
 // H
 function chosenWine(wines) {
@@ -1123,6 +1118,84 @@ function actualMemorySize(ms) {
 	} else {
 		return (actualStorage).toString()+'MB';
 	}
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Return the Sum of Two Numbers (With a Twist), Published by Mubashir Hassan
+// VH
+// The point of this challenge was to add two numbers like we did on paper in elementary school
+// without using any built in math functions 
+function sum2(a, b) {
+	let remainder = 0;
+	let totalSum = [];
+	let aArr = a.split('');
+	let bArr = b.split('');
+	
+	while (aArr.length > bArr.length) {
+		bArr.unshift('0');
+	}
+	while (bArr.length > aArr.length) {
+		aArr.unshift('0');
+	}
+
+	for (let i = aArr.length - 1; i > -1; i--) {
+		let sum = Number(aArr[i]) + Number(bArr[i]) + remainder;
+		
+		if (sum > 9) {
+			remainder = Number(sum.toString().split('')[0]);
+			totalSum.unshift(sum.toString().split('')[1]);
+		} else {
+			remainder = 0;
+			totalSum.unshift(sum.toString());
+		}
+	}
+		
+	if (remainder > 0) totalSum.unshift(remainder.toString());
+
+	return totalSum.join('');
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+// Product of Digits of Sum, Published by Ruud Peter Boelens
+// VH
+function sumDigProd(...nums) {
+	let num = nums.reduce((a, b) => a + b);
+	
+	while (num.toString().length > 1) {
+		num = Number(num.toString().split('').reduce((a, b) => a * b));
+	}
+	
+	return num;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Emphasise the Words, Published by Andrew Knapp
+// M
+function emphasise(str) {
+	if (str.length === 0) return "";
+	let answer = [];
+	let arr = str.toLowerCase().split(' ').forEach(word => {
+		let wordArr = word.split('');
+		if (isNaN(wordArr[0])) {
+			wordArr[0] = wordArr[0].toUpperCase();
+		}
+		answer.push(wordArr.join(''));
+	});
+	return answer.join(' ');
 }
 ///////////////////////////////
 ///////////////////////////////
