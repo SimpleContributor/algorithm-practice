@@ -2,7 +2,7 @@
 
 // Algo to solve the total % landmass of a country given a name and area
 function areaOfCountry(name, area) {
-	let landmass = (area/148940000*100).toFixed(2) + "%";
+	let landmass = (area / 148940000 * 100).toFixed(2) + "%";
 	return `${name} is ${landmass} of the total world's landmass`
 }
 
@@ -67,11 +67,11 @@ function distanceToNearestVowel(str) {
 		}
 		distArr.push(char);
 	})
-	
+
 	for (let i = 0; i < distArr.length - 1; i++) {
 		for (let j = i + 1; j < distArr.length; j++) {
 			if (distArr[j] == 0 && distArr[i] != 0) {
-				distArr[i] = j-i > distArr[i] > 0 ? distArr[i] : j-i;
+				distArr[i] = j - i > distArr[i] > 0 ? distArr[i] : j - i;
 				break;
 			} else if (distArr[j] != 0 && distArr[i] == 0) {
 				distArr[j] = j - i;
@@ -107,12 +107,12 @@ console.log(distanceToNearestVowel("totally"), [1, 0, 1, 0, 1, 2, 3])
 // The string will be one of three things: Asc (ascending), Des (descending), and None
 // Return the array in the given order. None will not change the order in any way
 function ascDesNone(arr, str) {
-	return str == "None" ? arr : str == "Asc" ? arr.sort((a,b) => a-b) : arr.sort((a,b) => b-a);
+	return str == "None" ? arr : str == "Asc" ? arr.sort((a, b) => a - b) : arr.sort((a, b) => b - a);
 }
 
 console.log(ascDesNone([4, 3, 2, 1], "Asc"), [1, 2, 3, 4]);
 console.log(ascDesNone([7, 8, 11, 66], "Des"), [66, 11, 8, 7]);
-console.log(ascDesNone([1, 2, 3, 4], "None"),[1, 2, 3, 4]);
+console.log(ascDesNone([1, 2, 3, 4], "None"), [1, 2, 3, 4]);
 console.log(ascDesNone([1, 0, 1, 0], "Asc"), [0, 0, 1, 1]);
 console.log(ascDesNone([1, 2, 2, 2, 2, 2, 2], "Des"), [2, 2, 2, 2, 2, 2, 1]);
 console.log(ascDesNone([9, 7, 43, 11, 16, 111, 19], "Asc"), [7, 9, 11, 16, 19, 43, 111]);
@@ -194,7 +194,7 @@ console.log(largestSwap(99), true, 'Cannot do better, so largest swap.');
 // Create a simple calculator that will take in two numbers and an operator
 // Return the result of the calculation
 function calculator(num1, operator, num2) {
-	return operator=="/"&&num2==0 ? "Can't divide by 0!" : eval(num1 + operator + num2);
+	return operator == "/" && num2 == 0 ? "Can't divide by 0!" : eval(num1 + operator + num2);
 }
 
 console.log(calculator(2, '/', 2), 1);
@@ -272,13 +272,13 @@ function calculateScore(games) {
 			game[1] === 'P' ? wins[0]++ : wins[1]++;
 		}
 	})
-	
-	return wins[0] > wins[1] ? "Abigail" : 
+
+	return wins[0] > wins[1] ? "Abigail" :
 		wins[0] < wins[1] ? "Benson" :
-		"Tie"
+			"Tie"
 }
 
-console.log(calculateScore([['R', 'P'], ['R', 'S'], ['S', 'P']]),  "Abigail");
+console.log(calculateScore([['R', 'P'], ['R', 'S'], ['S', 'P']]), "Abigail");
 console.log(calculateScore([['R', 'R'], ['S', 'S']]), "Tie");
 console.log(calculateScore([['S', 'R'], ['R', 'S'], ['R', 'R']]), "Tie");
 console.log(calculateScore([['S', 'R'], ['P', 'R']]), "Tie");
@@ -298,7 +298,7 @@ function canBuild(digits, arr) {
 	if (arr.length === 0) return true;
 	arr = arr.join("").split("");
 	let boolArr = [];
-	
+
 	for (let i = 0; i < arr.length - 1; i++) {
 		let numL = arr.filter(num => num == i).length;
 		boolArr.push(numL <= digits[i]);
@@ -324,17 +324,17 @@ class OnesThreesNines {
 	constructor(num) {
 		this.num = num;
 	}
-	
+
 	get ones() {
-		return Math.floor(this.num/1);
+		return Math.floor(this.num / 1);
 	}
-	
+
 	get threes() {
-		return Math.floor(this.num/3);
+		return Math.floor(this.num / 3);
 	}
-	
+
 	get nines() {
-		return Math.floor(this.num/9);
+		return Math.floor(this.num / 9);
 	}
 }
 ///////////////////////////////
@@ -359,13 +359,13 @@ function towerHanoi(discs) {
 // [3, 7, 3], [1, 5, 1], [2, -2, 2]
 function countBoomerangs(arr) {
 	let count = 0;
-	
-	for (let i = 0; i < arr.length -1; i++) {
-		if (arr[i] != arr[i+1] && arr[i] === arr[i+2]) {
-				count++;
+
+	for (let i = 0; i < arr.length - 1; i++) {
+		if (arr[i] != arr[i + 1] && arr[i] === arr[i + 2]) {
+			count++;
 		}
 	}
-	
+
 	return count;
 }
 ///////////////////////////////
@@ -384,18 +384,18 @@ function countBoomerangs(arr) {
 // Return whether or not the walker survives.
 function divingMinigame(arr) {
 	let breath = 10;
-	
+
 	arr.forEach(num => {
 		if (breath > 10) breath = 10;
 		if (breath <= 0) return false;
-		
+
 		if (num >= 0) {
 			breath = breath + 4;
 		} else if (num < 0) {
 			breath = breath - 2;
 		}
 	})
-	
+
 	return breath > 0;
 }
 ///////////////////////////////
@@ -415,7 +415,7 @@ function oddishOrEvenish(num) {
 }
 // A more clever function by K750i
 function oddishOrEvenish(num) {
-	return [...String(num)].map(Number).reduce((a,v) => a + v) % 2 ? 'Oddish' : 'Evenish'
+	return [...String(num)].map(Number).reduce((a, v) => a + v) % 2 ? 'Oddish' : 'Evenish'
 }
 ///////////////////////////////
 ///////////////////////////////
@@ -426,7 +426,7 @@ function oddishOrEvenish(num) {
 // How Many Days Between Two Dates, Published by Alon
 // This function will take in two new Dates and return the amount of days between
 // the two dates.
-const getDays = (d1, d2) => Math.round(Math.abs((d1-d2)/(24*60*60*1000)));
+const getDays = (d1, d2) => Math.round(Math.abs((d1 - d2) / (24 * 60 * 60 * 1000)));
 ///////////////////////////////
 ///////////////////////////////
 
@@ -440,7 +440,7 @@ function toArray(obj) {
 	let arr = [];
 	for (const [key, value] of Object.entries(obj)) {
 		arr.push([key, value])
-		console.log(arr);	
+		console.log(arr);
 	}
 	return arr;
 }
@@ -485,43 +485,43 @@ const getLength = arr => arr.flat(Infinity).length;
 function trackRobot(...steps) {
 	let stepArr = [...steps];
 	let dest = [0, 0];
-	
+
 	let eastWest = [];
 	for (var i = 1; i < stepArr.length; i = i + 2) {
 		eastWest.push(stepArr[i]);
 	}
-	
+
 	var northSouth = [];
 	for (var i = 0; i < stepArr.length; i = i + 2) {
 		northSouth.push(stepArr[i]);
 	}
-	
+
 	eastWest.forEach((num, i) => {
 		i % 2 === 0 ? dest[0] += num : dest[0] -= num;
 	})
-	
+
 	northSouth.forEach((num, i) => {
 		i % 2 === 0 ? dest[1] += num : dest[1] -= num;
 	})
-	
+
 	return dest;
 }
 // A more clever function by soilblue
 function trackRobot(...steps) {
-	var r = [0,0];
+	var r = [0, 0];
 	for (var i in steps) {
 		var d = i % 4;
-	  if (d == 0) r[1] += steps[i];
-	  if (d == 1) r[0] += steps[i];
-	  if (d == 2) r[1] -= steps[i];
-	  if (d == 3) r[0] -= steps[i];
+		if (d == 0) r[1] += steps[i];
+		if (d == 1) r[0] += steps[i];
+		if (d == 2) r[1] -= steps[i];
+		if (d == 3) r[0] -= steps[i];
 	}
 	return r;
 }
 // Another by Thijs Vogelsang
 function trackRobot(...steps) {
 	return steps.reduce((a, c, i) => {
-		a[(i+1) % 2] += (i % 4 > 1 ? -c : c); 
+		a[(i + 1) % 2] += (i % 4 > 1 ? -c : c);
 		return a;
 	}, [0, 0])
 }
@@ -553,7 +553,7 @@ const triangle = n => n * (n + 1) / 2;
 // Check If the Brick Fits through the Hole, Published by Matt
 // given a 3D brick (a,b,c) check to see if it will fit through a 2D hole (w,h)
 // the brick can be rotated
-const doesBrickFit = (a,b,c, w,h) => a*b <= w*h || a*c <= w*h || b*c <= w*h;
+const doesBrickFit = (a, b, c, w, h) => a * b <= w * h || a * c <= w * h || b * c <= w * h;
 ///////////////////////////////
 ///////////////////////////////
 
@@ -611,8 +611,8 @@ function lcm(n1, n2) {
 	let max = Math.max(n1, n2);
 	let min = Math.min(n1, n2);
 	for (let i = 1; i < max; i++) {
-		if (max*i % min === 0) {
-			return max*i;
+		if (max * i % min === 0) {
+			return max * i;
 		}
 	}
 }
@@ -623,16 +623,16 @@ function lcm(n1, n2) {
 
 
 // Array of Multiples, Published by Raka Raka
-function arrayOfMultiples (num, length) {
+function arrayOfMultiples(num, length) {
 	let arr = [];
 	for (let i = 1; i <= length; i++) {
-		arr.push(num*i);
+		arr.push(num * i);
 	}
 	return arr;
 }
 // A more clever solution by Pustur
 const arrayOfMultiples = (num, length) =>
-  Array.from({ length }, (_, i) => num * (i + 1));
+	Array.from({ length }, (_, i) => num * (i + 1));
 ///////////////////////////////
 ///////////////////////////////
 
@@ -640,11 +640,11 @@ const arrayOfMultiples = (num, length) =>
 
 
 // Guess the Sequence, Published by Mubashir Hassan
-const guessSequence = n => 30*(n**2) + 60*n;
+const guessSequence = n => 30 * (n ** 2) + 60 * n;
 // Publishers solution
-function guessSequence(n){
+function guessSequence(n) {
 	return n * (n + 2) * 30;
-  }
+}
 ///////////////////////////////
 ///////////////////////////////
 
@@ -652,8 +652,8 @@ function guessSequence(n){
 
 
 // Integer Digits Count, Published by Deep Xavier
-  function count(n) {
-	return Math.floor(Math.log10(Math.abs(n+1)) + 1);
+function count(n) {
+	return Math.floor(Math.log10(Math.abs(n + 1)) + 1);
 }
 // Publishers solution
 const count = n => n == 0 ? 1 : Math.floor(Math.log10(Math.abs(n))) + 1
@@ -665,11 +665,11 @@ const count = n => n == 0 ? 1 : Math.floor(Math.log10(Math.abs(n))) + 1
 
 // Square Every Digit, Published by Enkuryo
 function squareDigits(n) {
-	return Number(n.toString().split("").map(Number).map(num => num**2).join(''));
+	return Number(n.toString().split("").map(Number).map(num => num ** 2).join(''));
 }
 // Publishers solution
 function squareDigits(n) {
-	return +[...String(n)].map(x => x*x).join('');
+	return +[...String(n)].map(x => x * x).join('');
 }
 ///////////////////////////////
 ///////////////////////////////
@@ -680,11 +680,11 @@ function squareDigits(n) {
 // Travelling Salesman Problem, Published by jordan sumitomo
 function paths(n) {
 	if (n === 0 || n === 1)
-    return 1;
-  for (var i = n - 1; i >= 1; i--) {
-    n *= i;
-  }
-  return n;
+		return 1;
+	for (var i = n - 1; i >= 1; i--) {
+		n *= i;
+	}
+	return n;
 }
 // A more clever solution by Euphonic Sounds
 const paths = n => !n || n * paths(--n);
@@ -697,8 +697,8 @@ const paths = n => !n || n * paths(--n);
 // Sorting Time, Published by Mubashir Hassan
 // The point of the challenge was to sort an array of integers without using built in methods
 function sortArray(arr) {
-	for(let i=0; i<arr.length-1; i++) {
-		for(let j = i+1; j<arr.length; j++) {
+	for (let i = 0; i < arr.length - 1; i++) {
+		for (let j = i + 1; j < arr.length; j++) {
 			if (arr[i] > arr[j]) {
 				let temp = arr[i];
 				arr[i] = arr[j];
@@ -709,10 +709,10 @@ function sortArray(arr) {
 	return arr;
 }
 // A more clever solution by Data Case
-function sortArray(a){
-	let r=[]
-	while(a.length>0){
-		r.push(a.splice(a.indexOf(Math.min(...a)),1))		
+function sortArray(a) {
+	let r = []
+	while (a.length > 0) {
+		r.push(a.splice(a.indexOf(Math.min(...a)), 1))
 	}
 	return r.flat()
 }
@@ -736,7 +736,7 @@ function numInStr(arr) {
 }
 // Solution using regex by soilblue
 function numInStr(arr) {
-	return arr.filter(x=>/\d/.test(x));
+	return arr.filter(x => /\d/.test(x));
 }
 ///////////////////////////////
 ///////////////////////////////
@@ -747,7 +747,7 @@ function numInStr(arr) {
 // Function Times 3, Published by BijogFc24
 // This function uses currying and is called with this syntax:
 // product(1,2)(1,1)(2,3);
-const product = (a,b) => (m,n) => (x,y) => a*m*x + b*n*y;
+const product = (a, b) => (m, n) => (x, y) => a * m * x + b * n * y;
 ///////////////////////////////
 ///////////////////////////////
 
@@ -789,7 +789,7 @@ function isEven(number) {
 
 // Combinations, Published by Matt
 // H
-const combinations = (...items) => items.filter(n => n!==0).reduce((a, c) => a*c);
+const combinations = (...items) => items.filter(n => n !== 0).reduce((a, c) => a * c);
 ///////////////////////////////
 ///////////////////////////////
 
@@ -800,11 +800,11 @@ const combinations = (...items) => items.filter(n => n!==0).reduce((a, c) => a*c
 // VH
 function windowMaxes(array, windowLength) {
 	let newArr = [];
-	
-  for (let i = 0; i < array.length - windowLength+1; i++) {
+
+	for (let i = 0; i < array.length - windowLength + 1; i++) {
 		newArr.push(Math.max(...array.slice(i, i + windowLength)));
 	}
-	
+
 	return newArr;
 }
 ///////////////////////////////
@@ -818,32 +818,32 @@ function windowMaxes(array, windowLength) {
 function additivePersistence(n) {
 	let arr = n.toString().split('');
 	let count = 0;
-	
-	while (arr.length !== 1)	{
-		arr = arr.map(n => Number(n)).reduce((a,b) => a+b).toString().split('');
+
+	while (arr.length !== 1) {
+		arr = arr.map(n => Number(n)).reduce((a, b) => a + b).toString().split('');
 		count++;
 	}
-		
+
 	return count;
 }
 
 function multiplicativePersistence(n) {
 	let arr = n.toString().split('');
 	let count = 0;
-	
-	while (arr.length !== 1)	{
-		arr = arr.map(n => Number(n)).reduce((a,b) => a*b).toString().split('');
+
+	while (arr.length !== 1) {
+		arr = arr.map(n => Number(n)).reduce((a, b) => a * b).toString().split('');
 		count++;
 	}
-		
+
 	return count;
 }
 // A more clever solution by Ruud Peter Boelens
 // The test cases never had negative values, but this solution accounts for negatives as well.
 function additivePersistence(n) {
-	let count=0;
-	while(String(n).length>1){
-		n=[...String(n)].reduce((a, b)=>+a + +b);
+	let count = 0;
+	while (String(n).length > 1) {
+		n = [...String(n)].reduce((a, b) => +a + +b);
 		count++;
 	}
 	return count;
@@ -862,11 +862,11 @@ function balanced(word) {
 		arr[i] = word.charCodeAt(i) - 96;
 	})
 	if (word.length % 2 !== 0) {
-		arr.splice(Math.floor(word.length/2), 1);
+		arr.splice(Math.floor(word.length / 2), 1);
 	}
-	let firstHalf = arr.slice(0, arr.length/2).reduce((a,b) => a + b);
-	let secondHalf = arr.slice(arr.length/2, arr.length).reduce((a,b) => a + b);
-	
+	let firstHalf = arr.slice(0, arr.length / 2).reduce((a, b) => a + b);
+	let secondHalf = arr.slice(arr.length / 2, arr.length).reduce((a, b) => a + b);
+
 	return firstHalf === secondHalf;
 }
 ///////////////////////////////
@@ -878,9 +878,9 @@ function balanced(word) {
 // Happy Numbers, Published by Jon Ingram
 // VH
 function happy(n) {
-	let seq = [...n.toString()].map(a => Number(a)**2).reduce((a,b) => a+b);
-	while(seq != 1 && seq != 4) {
-		seq = [...seq.toString()].map(a => Number(a)**2).reduce((a,b) => a+b);
+	let seq = [...n.toString()].map(a => Number(a) ** 2).reduce((a, b) => a + b);
+	while (seq != 1 && seq != 4) {
+		seq = [...seq.toString()].map(a => Number(a) ** 2).reduce((a, b) => a + b);
 	}
 	return seq === 1;
 }
@@ -917,8 +917,8 @@ function lemonade(bills) {
 				break;
 			case 20:
 				bank[0] > 0 && bank[1] > 0 ? bank[0]-- && bank[1]-- && bank[2]++
-				: bank[0] > 2 ? bank[0] = bank[0]-3  && bank[2]++
-				: open = false;
+					: bank[0] > 2 ? bank[0] = bank[0] - 3 && bank[2]++
+						: open = false;
 				break;
 		}
 	})
@@ -950,9 +950,9 @@ function canBuild(digits, arr) {
 			})
 		} else {
 			digits[num] > 0 ? digits[num]-- : hasDigits = false;
-		}	
+		}
 	}
-return hasDigits;
+	return hasDigits;
 }
 // Here is some code I wrote before submit
 // I wanted it to be a little faster, so that is where the for...of loop comes in
@@ -963,7 +963,7 @@ return hasDigits;
 // function canBuild(digits, arr) {
 // 	if (arr.length === 0) return true;
 // 	let hasDigits = true;
-	
+
 // 	arr.forEach(num => {
 // 		if (num.toString().length > 1) {
 // 			let numArr = [...num.toString()].map(x => Number(x));
@@ -975,7 +975,7 @@ return hasDigits;
 // 		}
 // 		if (!hasDigits) return false;
 // 	})
-	
+
 // 	return true;
 // }
 
@@ -987,7 +987,7 @@ return hasDigits;
 function canBuild(digits, arr) {
 	let f = [...Array(10)].fill(0);
 	[...arr.join('')].forEach(v => f[v]++);
-	return f.every((v,i) => v <= digits[i]);
+	return f.every((v, i) => v <= digits[i]);
 }
 ///////////////////////////////
 ///////////////////////////////
@@ -1002,7 +1002,7 @@ function combinations(k, n) {
 	let kFac = 1;
 	let x = n;
 	let y = k;
-	while (x > n-k) {
+	while (x > n - k) {
 		nFac *= x;
 		x--;
 	}
@@ -1010,7 +1010,7 @@ function combinations(k, n) {
 		kFac *= y;
 		y--;
 	}
-	return Math.round(nFac/kFac);
+	return Math.round(nFac / kFac);
 }
 ///////////////////////////////
 ///////////////////////////////
@@ -1023,17 +1023,17 @@ function combinations(k, n) {
 function doesTriangleFit(brick, hole) {
 	let brickMaxIdx = brick.indexOf(Math.max(...brick));
 	let brickMax = brick.splice(brickMaxIdx, 1);
-	let isBrickTriangle = brick.reduce((a,b) => a+b) > brickMax;
-	
+	let isBrickTriangle = brick.reduce((a, b) => a + b) > brickMax;
+
 	let holeMaxIdx = hole.indexOf(Math.max(...hole));
 	let holeMax = hole.splice(holeMaxIdx, 1);
-	let isHoleTriangle = hole.reduce((a,b) => a+b) > holeMax;
-	
+	let isHoleTriangle = hole.reduce((a, b) => a + b) > holeMax;
+
 	if (isBrickTriangle && isHoleTriangle) {
-		let b = brick.reduce((a,b) => a+b) + brickMax;
-		let h = hole.reduce((a,b) => a+b) + holeMax;
-		let bA = Math.sqrt(b * (b-brick[0]) * (b-brick[1]) * (b-brickMax));
-		let hA = Math.sqrt(h * (h-hole[0]) * (h-hole[1]) * (h-holeMax));
+		let b = brick.reduce((a, b) => a + b) + brickMax;
+		let h = hole.reduce((a, b) => a + b) + holeMax;
+		let bA = Math.sqrt(b * (b - brick[0]) * (b - brick[1]) * (b - brickMax));
+		let hA = Math.sqrt(h * (h - hole[0]) * (h - hole[1]) * (h - holeMax));
 		return bA <= hA;
 	} else {
 		return false;
@@ -1043,14 +1043,14 @@ function doesTriangleFit(brick, hole) {
 const asc = (a, b) => a - b;
 
 const doesTriangleFit = (triangle, hole) => {
-  triangle.sort(asc);
-  hole.sort(asc);
+	triangle.sort(asc);
+	hole.sort(asc);
 
-  return (
-    triangle[0] + triangle[1] > triangle[2] &&
-    hole[0] + hole[1] > hole[2] &&
-    [0, 1, 2].every(i => triangle[i] <= hole[i])
-  );
+	return (
+		triangle[0] + triangle[1] > triangle[2] &&
+		hole[0] + hole[1] > hole[2] &&
+		[0, 1, 2].every(i => triangle[i] <= hole[i])
+	);
 };
 ///////////////////////////////
 ///////////////////////////////
@@ -1062,13 +1062,13 @@ const doesTriangleFit = (triangle, hole) => {
 // VH
 function maxPossible(n1, n2) {
 	let n1Arr = n1.toString().split('').map(n => Number(n));
-	let n2Arr = n2.toString().split('').map(n => Number(n)).sort((a, b) => b-a);
+	let n2Arr = n2.toString().split('').map(n => Number(n)).sort((a, b) => b - a);
 	n1Arr.forEach((num, i) => {
 		if (num < n2Arr[0]) {
 			n1Arr[i] = n2Arr[0];
 			n2Arr.shift();
 		};
-	});o
+	}); o
 	return Number(n1Arr.join(''));
 };
 ///////////////////////////////
@@ -1082,7 +1082,7 @@ function maxPossible(n1, n2) {
 function chosenWine(wines) {
 	return wines.length === 0 ? null
 		: wines.length === 1 ? wines[0].name
-		: wines.sort((a,b) => a.price - b.price)[1].name;
+			: wines.sort((a, b) => a.price - b.price)[1].name;
 }
 ///////////////////////////////
 ///////////////////////////////
@@ -1110,13 +1110,13 @@ function actualMemorySize(ms) {
 	if ((/GB/).test(ms)) {
 		actualStorage = parseInt(ms) * 930;
 	} else {
-		actualStorage = Math.floor(parseInt(ms) *0.93);
+		actualStorage = Math.floor(parseInt(ms) * 0.93);
 	}
-	
+
 	if (actualStorage > 1000) {
-		return (actualStorage / 1000).toFixed(2).toString()+'GB';
+		return (actualStorage / 1000).toFixed(2).toString() + 'GB';
 	} else {
-		return (actualStorage).toString()+'MB';
+		return (actualStorage).toString() + 'MB';
 	}
 }
 ///////////////////////////////
@@ -1125,9 +1125,6 @@ function actualMemorySize(ms) {
 
 
 
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Return the Sum of Two Numbers (With a Twist), Published by Mubashir Hassan
 // VH
 // The point of this challenge was to add two numbers like we did on paper in elementary school
@@ -1137,7 +1134,7 @@ function sum2(a, b) {
 	let totalSum = [];
 	let aArr = a.split('');
 	let bArr = b.split('');
-	
+
 	while (aArr.length > bArr.length) {
 		bArr.unshift('0');
 	}
@@ -1147,7 +1144,7 @@ function sum2(a, b) {
 
 	for (let i = aArr.length - 1; i > -1; i--) {
 		let sum = Number(aArr[i]) + Number(bArr[i]) + remainder;
-		
+
 		if (sum > 9) {
 			remainder = Number(sum.toString().split('')[0]);
 			totalSum.unshift(sum.toString().split('')[1]);
@@ -1156,7 +1153,7 @@ function sum2(a, b) {
 			totalSum.unshift(sum.toString());
 		}
 	}
-		
+
 	if (remainder > 0) totalSum.unshift(remainder.toString());
 
 	return totalSum.join('');
@@ -1170,11 +1167,11 @@ function sum2(a, b) {
 // VH
 function sumDigProd(...nums) {
 	let num = nums.reduce((a, b) => a + b);
-	
+
 	while (num.toString().length > 1) {
 		num = Number(num.toString().split('').reduce((a, b) => a * b));
 	}
-	
+
 	return num;
 }
 ///////////////////////////////
@@ -1196,6 +1193,61 @@ function emphasise(str) {
 		answer.push(wordArr.join(''));
 	});
 	return answer.join(' ');
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// New Numbers, Published by Matt
+// VH
+function isNew(n) {
+	let nArr = n.toString().split('').map(num => Number(num));
+	let nLen = nArr.length;
+	if (nLen === 1) return true;
+	let minN = Math.min(...nArr.filter(number => number != 0));
+	if (nLen === 2 && nArr[0] < nArr[1]) {
+		return true;
+	} else if (nLen === 2 && nArr[1] === 0) {
+		return true
+	} else if (nLen > 2 && nArr[0] === minN) {
+		nArr.shift();
+		let arr = [...nArr];
+		arr.sort((a, b) => a - b);
+		return nArr.every((number, i) => {
+			return number === arr[i];
+		})
+	}
+	return false;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+// Vending Machine, Published by Pustur
+// VH
+function vendingMachine(products, money, productNumber) {
+	let validChange = [500, 200, 100, 50, 20, 10];
+	let productIndex = products.findIndex(product => product.number == productNumber);
+	let change = [];
+	if (productIndex === -1) return "Enter a valid product number";
+	if (money < products[productIndex].price) return "Not enough money for this product";
+	let difference = money - products[productIndex].price;
+	while (difference > 0) {
+		let c = validChange.find(value => value <= difference);
+		change.push(c);
+		difference -= c;
+	}
+	return {
+		product: `${products[productIndex].name}`,
+		change
+	};
 }
 ///////////////////////////////
 ///////////////////////////////
