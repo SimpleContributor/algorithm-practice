@@ -1200,9 +1200,6 @@ function emphasise(str) {
 
 
 
-
-
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // New Numbers, Published by Matt
 // VH
 function isNew(n) {
@@ -1248,6 +1245,100 @@ function vendingMachine(products, money, productNumber) {
 		product: `${products[productIndex].name}`,
 		change
 	};
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+// Dance for Cash, Published by Zero_man
+// H
+const MOVES = ["Shimmy", "Shake", "Pirouette", "Slide", "Box Step", "Headspin", "Dosado", "Pop", "Lock", "Arabesque"];
+
+function danceConvert(pin) {
+	let danceMoves = [];
+	let pinNum = pin.split('').map(x => Number(x));
+	if (pinNum.length < 4) return 'Invalid input.';
+
+	let movesArr = [...MOVES];
+	for (const num of pinNum) {
+		if (!isNaN(num)) {
+			danceMoves.push(movesArr[num]);
+			let firstWord = movesArr.shift();
+			movesArr.push(firstWord);
+		} else {
+			danceMoves = 'Invalid input.';
+			break;
+		}
+	}
+
+	return danceMoves;
+}
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+// The Fiscal Code, Published by er0s
+// Expert
+const months = {
+	1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "H",
+	7: "L", 8: "M", 9: "P", 10: "R", 11: "S", 12: "T"
+}
+
+function fiscalCode(person) {
+	let code = [];
+	let vowels = /[aeiou]/gi;
+	let consonants = /[^aeiou]/gi;
+	let fullDate = person.dob.replace(/(^|\D)(\d)(?!\d)/g, '$10$2');
+
+	let surname = person.surname.toUpperCase();
+	let surnameConsonants = surname.match(consonants);
+	let surnameVowels = surname.match(vowels);
+	if (surnameConsonants.length === 2) {
+		code.push(surnameConsonants[0], surnameConsonants[1], surnameVowels[0]);
+	} else if (surnameConsonants.length >= 3) {
+		code.push(surnameConsonants[0], surnameConsonants[1], surnameConsonants[2]);
+	} else if (surnameConsonants.length === 1 && surnameVowels.length > 1) {
+		code.push(surnameConsonants[0], surnameVowels[0], surnameVowels[1]);
+	} else {
+		code.push(surnameConsonants[0], surnameVowels[0], "X");
+	}
+
+	let name = person.name.toUpperCase();
+	let nameConsonants = name.match(consonants);
+	let nameVowels = name.match(vowels);
+	if (nameConsonants.length === 2) {
+		code.push(nameConsonants[0], nameConsonants[1], nameVowels[0]);
+	} else if (nameConsonants.length === 3) {
+		code.push(...nameConsonants);
+	} else if (nameConsonants.length > 3) {
+		code.push(nameConsonants[0], nameConsonants[2], nameConsonants[3]);
+	} else if (nameConsonants.length === 1 && nameVowels.length > 1) {
+		code.push(nameConsonants[0], nameVowels[0], nameVowels[1]);
+	} else {
+		code.push(nameConsonants[0], nameVowels[0], "X");
+	}
+
+	let birthYear = fullDate.slice(-2);
+	code.push(birthYear);
+
+	let birthMonth = fullDate.slice(3, 5);
+	let birthMonthIndex = Number(birthMonth) - 1;
+	let birthMonthLetter = Object.values(months)[birthMonthIndex];
+	code.push(birthMonthLetter);
+
+	let birthDay = fullDate.slice(0, 2);
+	if (person.gender === "F") birthDay = Number(birthDay) + 40;
+	code.push(birthDay);
+
+	return code.join('');
 }
 ///////////////////////////////
 ///////////////////////////////
