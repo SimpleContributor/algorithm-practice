@@ -1213,7 +1213,6 @@ function vendingMachine(products, money, productNumber) {
 ///////////////////////////////
 ///////////////////////////////
 
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
 // Dance for Cash, Published by Zero_man
 // H
 const MOVES = [
@@ -1354,3 +1353,67 @@ function colorPatternTimes(cols) {
 }
 ///////////////////////////////
 ///////////////////////////////
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+
+// The Antipodes Average, Published by er0s
+// Hard
+function antipodesAverage(arr) {
+  let arr1;
+  let arr2;
+  let finalArr = [];
+  if (arr.length % 2 === 0) {
+    arr1 = arr.slice(0, arr.length / 2);
+    arr2 = arr.slice(arr.length / 2).reverse();
+  } else {
+    arr1 = arr.slice(0, Math.floor(arr.length / 2));
+    arr2 = arr.slice(Math.ceil(arr.length / 2)).reverse();
+  }
+  arr1.forEach((num, i) => {
+    finalArr.push((arr1[i] + arr2[i]) / 2);
+  });
+  return finalArr;
+}
+///////////////////////////////
+///////////////////////////////
+
+// Disarium Number, Published by Deep Xavier
+// Hard
+function isDisarium(n) {
+  let nums = n.toString().split('');
+  let answer = 0;
+  nums.map((num, i) => {
+    answer += num ** (i + 1);
+  });
+  return answer === n;
+}
+///////////////////////////////
+///////////////////////////////
+
+// Return the Most Expensive Piece of Jewellery, Published by Jenny Fieldings
+// Hard
+function mostExpensive(obj) {
+  const items = Object.keys(obj);
+  const values = Object.values(obj);
+  const mostExpensivePrice = Math.max(...values);
+  const mostExpensiveItem = values.indexOf(mostExpensivePrice);
+
+  return `The most expensive one is the ${items[mostExpensiveItem]}`;
+}
+///////////////////////////////
+///////////////////////////////
+
+/////////////////////////
+function solution(A) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  let sortedA = A.sort((a, b) => a - b);
+  let uniqueA = [];
+  sortedA.forEach((num) => {
+    if (uniqueA.indexOf(num === -1)) {
+      uniqueA.push(num);
+    }
+  });
+  console.log(uniqueA);
+}
+
+solution(1, 3, 6, 4, 1, 2);
