@@ -1354,8 +1354,6 @@ function colorPatternTimes(cols) {
 ///////////////////////////////
 ///////////////////////////////
 
-///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
-
 // The Antipodes Average, Published by er0s
 // Hard
 function antipodesAverage(arr) {
@@ -1417,3 +1415,20 @@ function solution(A) {
 }
 
 solution(1, 3, 6, 4, 1, 2);
+///////////////////////////////
+///////////////////////////////
+
+///////////// TODAYS ALGOS ///////////// TODAYS ALGOS ///////////// TODAYS ALGOS /////////////
+
+// Double Character Swap, Published by Helen Yu
+// Hard
+function doubleSwap(str, c1, c2) {
+  return str
+    .split('')
+    .map((a) => {
+      return a === c1 ? (a = c2) : a === c2 ? (a = c1) : a;
+    })
+    .join('');
+}
+///////////////////////////////
+///////////////////////////////
